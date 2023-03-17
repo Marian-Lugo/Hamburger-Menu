@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de practica</title>
+</head>
+<body>
+    <h1>Ejercicios de logica</h1>
+    <script>
+// 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. 
+//miFuncion("Hola Mundo") devolverá 10.
+console.log("****Funcion contar caracteres*******");
+function contarCaracteres(cadenaDeTexto) {
+    if (typeof cadenaDeTexto === 'string') {
+        return cadenaDeTexto.length
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+
+console.log(contarCaracteres('Marian'));
+
+/* 2) Programa una función que te devuelva el texto recortado según el número de caracteres 
+indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola". */
+console.log("****Funcion caracteres recortados*******");
+function caracteresRecortados(cadenaDeTexto, numero) {
+    if (typeof cadenaDeTexto === 'string') {
+        if(numero>cadenaDeTexto.length) {
+            return console.log("numero supera el tamaño de la cadena");
+        }else{
+            return cadenaDeTexto.substring(0,numero)    
+        }        
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+
+console.log(caracteresRecortados("Marian Nathalia Estigarribia Lugo",11));
+
+
+/* 3) Programa una función que dado un String te devuelva un Array de textos separados p
+or cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal']. */
+console.log("****Funcion Array de caracteres*******");
+function arraySeparadoPorCaracteres(cadenaDeTexto) {
+    if (typeof cadenaDeTexto === 'string') {
+        return cadenaDeTexto.split(" ")       
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+
+console.log(arraySeparadoPorCaracteres("Hola Marian como estas"));
+
+
+/* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
+devolverá Hola Mundo Hola Mundo Hola Mundo. */
+console.log("****Funcion Repetir Texto*******");
+function repetirTexto(cadenaDeTexto, veces) {
+    if (typeof cadenaDeTexto === 'string') {
+        return cadenaDeTexto.repeat(veces)     
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+console.log(repetirTexto(" Hola baby <3 ", 100));
+
+/* 5) Programa una función que invierta las palabras de una cadena de texto, 
+pe. miFuncion("Hola Mundo") 
+devolverá "odnuM aloH". */
+console.log("****Funcion Invertir cadena de texto*******");
+function invertirTexto(cadenaDeTexto) {
+    if (typeof cadenaDeTexto === 'string') {
+        return cadenaDeTexto.split("").reverse().join("");   
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+console.log(invertirTexto(" Hola baby <3 "));
+
+/* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, 
+pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2. */
+console.log("****Funcion contar numero de veces que se repite una palabra*******");
+function contarPalabras(cadenaDeTexto, buscar) {
+    if (typeof cadenaDeTexto === 'string') {
+        let arrayPalabras=cadenaDeTexto.split(" "); 
+        var indices = [];
+        for(var i = 0; i < arrayPalabras.length; i++) {
+          if (arrayPalabras[i].toLowerCase() === buscar.toLowerCase()) indices.push(i);
+        }
+	    return indices.length;
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+console.log(contarPalabras("Hola Marian Marian marian", "Marian"));
+/* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un 
+sentido que en otro), pe. mifuncion("Salas") devolverá true. */
+console.log("****Funcion Palindromo*******");
+function esPalindromo(cadenaDeTexto, buscar) {
+    if (typeof cadenaDeTexto === 'string') {
+        let cadenaReverse = cadenaDeTexto.split("").reverse().join(""); 
+        if (cadenaDeTexto === cadenaReverse) {
+            return console.log("Es palindromo");
+        }else{
+            console.log();
+        }
+    }else{
+        return console.log("No es un caracter");
+    }
+}
+console.log(esPalindromo("Hola Marian Marian marian", "Marian"));
+
+
+
+/* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, 
+xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
+console.log("Examen");
+
+function trineo(array){
+    for (let index = 0; index < array.length-1; index++) {
+        let bandera
+        if (array[i]) {
+            bandera=true;
+        } else {
+           bandera=false
+           break;
+        }
+        
+    }
+    return bandera;
+}
+
+console.log(trineo([3,4,5]));
+
+    </script>
+</body>
+</html>

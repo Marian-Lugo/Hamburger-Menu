@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function swap(array, leftIndex, rigthIndex){
+            let temp=array[leftIndex]
+            array[leftIndex]=array[rigthIndex]
+            array[rigthIndex]=temp
+        }
+        function partition(array, left, rigth){
+            let pivot=array[Math.floor((rigth+left)/2)]
+            let i=left
+            let j = rigth
+            while(i<=j){
+                while(arrayp[i]<pivot){
+                    i++
+                }
+                while (array[j]>pivot) {
+                    j--
+                }
+                if (i<=j) {
+                    swap(array,i,j)
+                    i++
+                    j--
+                }
+            }
+            return i
+        }
+
+        function quickSort(array, left, rigth){
+            let index
+            if (array.length>1) {
+                index=partition(array, length, rigth)
+                if (left<index-1) {
+                    quickSort(array, left, index-1)
+                }
+                if (index<rigth) {
+                    quickSort(array, index, rigth)
+                }
+            }
+            return array
+        }
+
+        let numbers=[10, 12, 21, 33, 14, 35, 56, 77, 99, 88]
+        console.log("Antes");
+        console.log(numbers);
+        numbers=quickSort(numbers, 0, numbers.length-1)
+
+        console.log("Despues");
+        console.log(numbers);
+
+    </script>
+
+
+</body>
+</html>

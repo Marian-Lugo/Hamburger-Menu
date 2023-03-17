@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejercicios de practica HackWomen</h1>
+    <script>
+        /*Convertir edad a dias*/
+        function convertirEdadADias(edad){
+          return edad*365      
+        }
+
+        console.log("Edad a Dias", convertirEdadADias(25));
+
+        /*Partido de baloncesto*/
+        function points(twoPointers, threePointers) {
+                let dobles=twoPointers*2
+                let triples=threePointers*3
+                let total=dobles+triples
+                return total
+        }
+
+        console.log("Total de puntos", points(38, 8));
+
+        /*Borde maximo de un triangulo*/
+        function nextEdge(side1, side2) {
+            rangoMaximo=(side1+side2)-1
+            return rangoMaximo
+        }
+
+        console.log("Rango maximo del triangulo", nextEdge(9, 2));
+
+        /*Operador AND*/
+        function and(a, b){
+            if (a==true && b==true) {
+                return true
+            }else{
+                return false
+            }
+        }
+console.log(and(true, true));
+
+/*Numero simetrico*/
+function esSimetrico(numero) {
+    let inverso=numero.toString().split("").reverse().join("");   
+    if (inverso===numero.toString()) {
+        return true
+    } else {
+        return falso
+    }    
+    
+}
+console.log();
+
+/*Suma de cubos
+Cree una función que tome un arreglo de números y devuelva la suma de sus cubos.*/
+
+function sumaCubos(array) {
+    let suma=0;
+    let cubos=0;
+    if (array.length==0) {
+        return 0
+    } else {
+        for (let index = 0; index < array.length; index++) {
+            cubos=Math.pow(array[index],3)
+            suma=suma+cubos; 
+        }
+        return suma;
+    }
+    
+    
+}
+console.log(sumaCubos([2]));
+/*Comprobar si una matriz se puede anidar en otra*/
+
+function canNest(arr1, arr2){
+    let max1=Math.max.apply(null, arr1);
+    let max2=Math.max.apply(null, arr2);
+    let min1=Math.min.apply(null, arr1);
+    let min2=Math.min.apply(null, arr2);
+    let result;
+    if ((min1>min2) && (max1<max2)) {
+        result=arr1.concat(arr2);
+        return true
+    } else {
+        return false
+    }
+    
+}
+console.log("Anidar", canNest([1, 2, 3, 4], [0, 6]));
+console.log("Anidar", canNest([9, 9, 8], [8, 9]));
+
+/*Factorial*/
+ function factoriales(n) {
+	let factorial=1;
+    if (!isNaN(n)) {
+        if (n<0) {
+            return "No tiene factorial"
+        } else {
+            while (n>1) {
+                factorial=factorial*n
+                n--
+            }
+            return factorial;
+        }
+    }else{
+        return "No es un numero"
+    }
+} 
+
+console.log("Factorial: ", factoriales(8));
+
+
+/* const factorial = numero => {
+	if (numero < 0) numero = numero * -1;
+	if (numero <= 0) return 1;
+	let factorial = 1;
+	while (numero > 1) {
+		factorial = factorial * numero;
+		numero--;
+	}
+	return factorial;
+}
+
+for (let x = 0; x < 10; x++) {
+	console.log(`El factorial de ${x} es ${factorial(x)}`);
+} */
+
+/*Ordenar números en orden descendente
+Cree una función que tome cualquier número no negativo como argumento y lo devuelva con sus 
+dígitos en orden descendente. El orden descendente es cuando ordenas de mayor a menor.*/
+console.log("----Ordenar digitos de un numero----");
+/*function sortDescending(num) {
+    let cifras = new Array
+    let ordenado
+    let index=0
+    if (num>0) {
+        while (num>0) {
+         cifras[index]=num%10
+         num=Math.trunc(num/10)
+         index++
+         }
+         ordenado=cifras.sort().reverse().toString().split(',').join('')
+        return parseInt(ordenado)
+    } else {
+        return 0
+    }
+    
+	
+}*/
+
+function sortDescending(num){
+    let rev=(""+num).split("").sort().reverse().join("")
+    
+    return parseInt(rev)  
+}
+
+
+console.log("ORDDENADO",sortDescending(73065));
+
+/*Volumen total de todas las cajas
+Dada una matriz de cajas, cree una función que devuelva el volumen total de todas esas cajas 
+combinadas. Una caja está representada por una matriz con tres elementos: largo, ancho y alto.
+
+Por ejemplo, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1]) debería devolver 266 ya que 
+(2 x 3 x 2) + (6 x 6 x 7) + (1x2x1) = 12 + 252 + 2 = 266.
+volumen total([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]) ➞ 63
+volumen total([2, 2, 2], [2, 1, 1]) ➞ 10
+VolumenTotal([1, 1, 1]) ➞ 1
+Se le entregará al menos una caja.
+Cada caja siempre tendrá tres dimensiones incluidas.*/
+
+console.log("********BOXES**********");
+function totalVolume(...boxes) {
+    var sum=0
+    if (boxes.length==0) {
+        return 0
+    }
+    for (let index = 0; index < boxes.length; index++) {
+        const element1 = boxes[index];
+        var mult=1
+        for (let index = 0; index < element1.length; index++) {
+            mult = mult*element1[index];           
+        }  
+        sum=sum+mult     
+    }
+    return sum;
+}   
+
+console.log(totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]) );
+console.log(totalVolume([2, 2, 2], [2, 1, 1]));
+console.log(totalVolume([1, 1, 1]));
+console.log(totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1]));
+
+
+/*Triplete Pitagórico
+Cree una función que valide si tres enteros dados forman un triplete pitagórico. 
+La suma de los cuadrados de los dos enteros más pequeños debe ser igual al cuadrado del número más 
+grande para ser validado.*/
+console.log("********Pitagorico******");
+
+
+function isTriplete(n1, n2, n3) {
+	let array=new Array
+    array[0]=n1
+    array[1]=n2
+    array[2]=n3
+
+    let flag = true;
+    for (let index = 0; index < array.length; index++) {
+        flag = false;
+      for (let index2 = 0; index2 < array.length; index2++) {
+        if (array[index2] > array[index2 + 1]) {
+            flag = true;
+            let temporal = array[index2];
+            array[index2] = array[index2 + 1];
+            array[index2 + 1] = temporal;
+            }
+        }
+         if (!flag) {
+            break;
+        }
+    }
+
+    if (((Math.pow(array[0],2)) + (Math.pow(array[1],2))) === (Math.pow(array[2],2))) {
+        return true
+    }else{
+        return false
+    }
+}
+
+
+console.log(isTriplete(3, 4, 5));
+console.log(isTriplete(13, 5, 12));
+console.log(isTriplete(1, 2, 3));
+
+
+/*Calculadora básica
+Cree una función que tome dos números y un operador matemático + - / * 
+y realice un cálculo con los números dados.
+calculadora(2, "+", 2) ➞ 4
+calculadora(2, "*", 2) ➞ 4
+calculadora(4, "/", 2) ➞ 2
+Si la entrada intenta dividir por 0, devuelve: "Can't divide by 0!"*/
+console.log("******Calculadora*********");
+function calculator(num1, operator, num2) {
+    let calculo
+    switch (operator) {
+        case operator="+":
+            calculo= num1+num2
+            break;
+        case operator="-":
+            calculo= num1-num2
+            break;
+        case operator="*":
+            calculo=num1*num2
+            break;
+        case operator="/":
+            if (num2==0) {
+                return "Can't divide by 0!"
+            }else{
+                calculo=num1/num2
+            }
+            break;
+        default:
+            break;
+    }
+    return calculo
+}
+
+console.log(calculator(2, "+", 2));
+console.log(calculator(2, "*", 2));
+console.log(calculator(4, "/", 2));
+
+
+/*Obtener la suma del presupuesto de las personas
+Cree la función que toma una matriz con objetos y devuelve la suma de los presupuestos de 
+las personas.
+
+Ejemplos
+obtenerPresupuestos([
+    { name: "Juan", age: 21, budget: 23000 },
+    { name: "Steve", age: 32, budget: 40000 },
+    { name: "Martin", age: 16, budget: 2700 }
+]) ➞ 65700*/
+
+console.log("********PRESUPUESTO*********");
+
+obtenerPresupuestos= [
+    { name: "Juan", age: 21, budget: 29000 },
+    { name: "Steve", age: 32, budget: 32000 },
+    { name: "Martin", age: 16, budget: 1600 }
+];
+
+function getBudgets(arr) {
+    let suma=0
+   for (let index = 0; index < arr.length; index++) {
+    suma=suma+arr[index].budget
+   }
+    return suma
+} 
+console.log(getBudgets(obtenerPresupuestos));
+
+/*Número de boomerangs
+Un boomerang es una secuencia en forma de V que está de pie o al revés. Específicamente, 
+un boomerang se puede definir como: sub-arreglo de longitud 3, con el primer y último dígito iguales 
+y el dígito medio diferente.
+Algunos ejemplos de bumerán:
+[3, 7, 3], [1, -1, 1], [5, 6, 5]
+Cree una función que devuelva el número total de bumeranes en una matriz.
+Para ilustrar:
+[3, 7, 3, 2, 1, 5, 1, 2, 2, -2, 2]
+// 3 boomerangs en esta secuencia: [3, 7, 3], [1, 5, 1], [2, -2, 2]
+Tenga en cuenta que los boomerangs pueden superponerse, así:
+[1, 7, 1, 7, 1, 7, 1]
+[1, 7, 1, 7, 1, 7, 1]
+ 5 boomerangs (de izquierda a derecha): [1, 7, 1], [7, 1, 7], [1, 7, 1], [7, 1, 7] y [1, 7, 1 ]
+*/
+
+console.log("**********Boomerang*********");
+function countBoomerangs(array) {
+    let contador=0
+    for (let index = 0; index < array.length-2; index++) {
+        if ((array[index+1]!=array[index] &&  array[index+1]!=array[index+2] ) && (array[index]===array[index+2])) {
+            contador++
+        }        
+    }
+    return contador
+}
+console.log(countBoomerangs([9, 5, 9, 5, 1, 1, 1]));
+console.log(countBoomerangs([5, 6, 6, 7, 6, 3, 9]));
+console.log(countBoomerangs([4, 4, 4, 9, 9, 9, 9]));
+
+console.log("**Remover duplicados***");
+
+function removeDups(array) {
+    let result=array.filter((valor, indice) => {
+        return array.indexOf(valor) === indice;
+    });
+  return result
+}
+
+console.log("Probando",removeDups([1, 0, 1, 0]));
+
+console.log("***Celsius***");
+function tempConversion(celsius) {
+    let f, k
+    f=(celsius*9/5 +32).toFixed(2)
+    k=(celsius + 273.15).toFixed(2);
+    if (k<0) {
+        return "Invalid"
+    }else {
+        let array = new Array;
+        array[0]=f
+        array[1]=k
+        return array
+    }
+    
+}
+console.log(tempConversion(300.4));
+
+
+/*JAZZ instantáneo
+Cree una función que concatene el número 7 al final de cada acorde en una matriz. 
+Ignora todos los acordes que ya terminan en 7.*/
+console.log("**********JAZ***************");
+function jazzify(array) {
+	for (let index = 0; index < array.length; index++) {
+        if ( array[index].charAt(array[index].length-1)!="7"  ) {
+            array[index]=array[index].concat("7")
+        }
+    }
+
+    return array
+}
+console.log(jazzify(["G7", "F", "C"]));
+console.log(jazzify(["F7", "E7", "A7", "Ab7", "Gm7", "C7"]));
+
+console.log("**********Maximo***************");
+function maxTotal(array) {
+    let flag = true;
+    let sum=0
+        for (let index = 0; index < array.length; index++) {
+          flag = false;
+          for (let index2 = 0; index2 < array.length; index2++) {
+            if (array[index2] < array[index2 + 1]) {
+              flag = true;
+              let temporal = array[index2];
+              array[index2] = array[index2 + 1];
+              array[index2 + 1] = temporal;
+            }
+          }
+          if (!flag) {
+            break;
+          }
+        }
+        
+        for (let index = 0; index < 5; index++) {
+            sum=sum+array[index]
+            
+        }
+       return sum
+    
+}
+
+console.log(maxTotal([1, 1, 0, 1, 3, 10, 10, 10, 10, 1]));
+
+
+
+console.log("********Matriz de matrices*******");
+function findLargestNums(array) {
+    let arrayMax= new Array
+    for (let index = 0; index < array.length; index++) {
+        const element1 = array[index];
+        arrayMax[index]=Math.max(...element1)  
+    }
+    return arrayMax
+}
+console.log(findLargestNums([[4, 2, 7, 1], [20, 70, 40, 90], [1, 2, 0]]));
+
+/*Una cadena de factores es una matriz en la que cada elemento anterior es un factor 
+del siguiente elemento consecutivo. La siguiente es una cadena de factores:*/
+
+/*console.log("**************Cadena de factores********************");
+function factorChain(array) {
+    let flag="Verdadero"
+    for (let index = 0; index < array.length; index++) {
+        //console.log("VUELTA", index);
+        let factorear = array[index+1]
+        let factores=isFactor(factorear) 
+        for (let i = 0; i < factores.length; i++) {
+            //console.log("Element a comparar", factores[i], array[index]);
+           if (factores.indexOf(array[index])=== -1) {
+                flag="Falso"
+           }
+        }
+        
+    }
+
+    return flag
+}
+
+function isFactor(numero){
+    let factores=[]
+    for (let i = 1; i <=Math.floor(Math.sqrt(numero)); ++i) {
+       if (numero % i ==0) {
+        factores.push(i);
+        if (numero / i !== i) {
+            factores.push(numero/i)
+        }
+       }     
+    }
+    factores.sort((a, b)=> a - b)
+    return factores
+}
+
+console.log(factorChain([1, 2, 4, 8, 16, 32]));
+console.log(factorChain([1, 1, 1, 1, 1, 1]));
+console.log(factorChain([2, 4, 6, 7, 12]));
+console.log(factorChain([10, 1]));
+console.log(factorChain([3, 6, 12, 36]));*/
+
+console.log("**************Cadena de factores********************");
+function factorChain(array) {
+    let flag="Verdadero"
+
+    for (let index = 0; index < array.length; index++) {
+       
+        
+        
+        let factores=[]
+        let numero=array[index+1]
+
+        for (let i = 1; i <=Math.floor(Math.sqrt(numero)); ++i) {
+            if (numero % i ==0) {
+                 factores.push(i);
+                 if (numero / i !== i) {
+                    factores.push(numero/i)
+                }
+            }     
+        }
+        factores.sort((a, b)=> a - b) 
+
+
+        for (let i = 0; i < factores.length; i++) {
+           if (factores.indexOf(array[index])=== -1) {
+            flag="Falso"
+           }
+        }
+
+        
+    }
+
+    return flag 
+}
+
+
+console.log(factorChain([1, 2, 4, 8, 16, 32]));
+console.log(factorChain([1, 1, 1, 1, 1, 1]));
+console.log(factorChain([2, 4, 6, 7, 12]));
+console.log(factorChain([10, 1]));
+console.log(factorChain([3, 6, 12, 36]));
+
+
+</script>
+</body>
+</html>

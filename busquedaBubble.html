@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Ordenamiento Bubble Sort</h1>
+    <script>
+      /*1. Posicionarse en el primer elemento
+          2. Comparar el elemento actual con el siguiente
+          3. Si el num sig. es menor que el actual, hacer swap
+          4. Moverse al sig num y tomarlo como actual
+          5. Repetir desde el paso 2 hasta recorrer todo el array
+          6. Si llego al final rep desde el paso 1
+          7. si alcanzo el final sin hacer cambios break*/
+
+      function bubbleSort(array) {
+        let flag = true;
+        for (let index = 0; index < array.length; index++) {
+          flag = false;
+          for (let index2 = 0; index2 < array.length; index2++) {
+            if (array[index2] > array[index2 + 1]) {
+              flag = true;
+              let temporal = array[index2];
+              array[index2] = array[index2 + 1];
+              array[index2 + 1] = temporal;
+            }
+          }
+          if (!flag) {
+            break;
+          }
+        }
+        return array;
+      }
+
+      let numbers = [10, 12, 21, 33, 14, 35, 56, 77, 99, 88];
+      console.log("Antes");
+      console.log(numbers);
+      //numbers = bubbleSort(numbers);
+      console.log("Despues");
+      console.log(numbers = bubbleSort(numbers));
+    </script>
+  </body>
+</html>

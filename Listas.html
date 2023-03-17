@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos JavaScript</h1>
+    <script>
+        class Node{
+            constructor(element){
+                this.element=element
+                this.next=null
+            }
+        }
+
+        class LinkedList{
+            constructor(){
+                this.head=null
+                this.size =0
+            }
+
+            add (element){
+                const node = new Node(element)
+                let currentNode
+                if(this.head===null) {
+                    this.head= node
+                }else{
+                    currentNode=this.head
+                    while(currentNode.next){
+                        currentNode=currentNode.next
+                    }
+                    currentNode.next=node
+                }
+                this.size++
+            }
+            insertAt(element, position){
+                if (position<0 || position > this.size) {
+                    return
+                }
+                const node=new Node (element)
+                let currentNode
+                let previousNode
+
+                currentNode= this.head
+
+                if(position===0){
+                    node.next=this.head
+                    this.head=node
+                }else{
+                    let iterator =0
+                    while (iterator<position) {
+                        iterator++
+                        previousNode=currentNode
+                        currentNode=currentNode.next
+                    }
+                    node.next=currentNode
+                    previousNode.next=node
+                }
+                this.size++
+            }
+            removeElement(element){
+                let currentNode = this.head
+                let previousNode
+                while(currentNode!==null){
+                    if (currentNode.element===element) {
+                        if (previousNode===null) {
+                            this.head=currentNode.next
+                        }else{
+                            previousNode.next=currentNode.next
+                        }
+                        this.size--
+                        return currentNode.element
+                    }
+                    previousNode=currentNode
+                    currentNode=currentNode.next
+                }
+                return -1
+            }
+
+            printList(){
+                let currentNode=this.head
+                while (currentNode) {
+                    console.log(currentNode.element);
+                    currentNode=currentNode.next
+                }
+            }
+        }
+
+
+
+const lista=new LinkedList
+lista.add(1)
+lista.add(2)
+lista.add(3)
+console.log("Insert At");
+lista.insertAt(100,2)
+console.log("Tamano",lista.size);
+console.log("Cabeza",lista.head);
+lista.printList();
+lista.removeElement(100);
+console.log("Tamano",lista.size);
+console.log("Cabeza",lista.head);
+lista.printList();    
+    </script>
+</body>
+</html>
